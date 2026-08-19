@@ -1,3 +1,4 @@
+import { img } from "../config";
 import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
@@ -34,7 +35,7 @@ export default function Navbar({ onOpenLogin, onOpenRegister }) {
         <Link className="navbar-brand d-flex justify-content-center align-items-center" to="/"
           style={{ width: '200px', height: '90px' }}>
           {/* BagStore */}
-          <img src="/images/logo/ML-Studio-Logo.png" alt="logo-ml-studio" />
+          <img src={img("/images/logo/ML-Studio-Logo.png")} alt="logo-ml-studio" />
         </Link>
 
         {/* Mobile Cart + Toggle Button */}

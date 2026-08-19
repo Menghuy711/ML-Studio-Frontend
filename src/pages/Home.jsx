@@ -1,3 +1,4 @@
+import { img } from "../config";
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
@@ -30,7 +31,7 @@ export default function Home() {
             {/* Product 1 */}
             <div className="col-md-6 col-lg-4">
               <div className="card product-card h-100">
-                <img src="/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/0.avif" className="card-img-top" alt="sling" />
+                <img src={img("/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/0.avif")} className="card-img-top" alt="sling" />
                 <div className="card-body">
                   <ProductBadge product={{ labels: ['Best Seller', 'New Arrival'] }} className="mb-2" />
                   <h5 className="card-title">Carryology Essentials Sling</h5>
@@ -39,7 +40,7 @@ export default function Home() {
                   <div className="d-flex gap-2">
                     <button 
                       className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'carryology-essentials-sling', title: 'Carryology Essentials Sling', price: 35, image: '/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/0.avif' })}
+                      onClick={() => handleQuickAdd({ id: 'carryology-essentials-sling', title: 'Carryology Essentials Sling', price: 35, image: img('/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/0.avif') })}
                     >
                       <i className="fa-solid fa-cart-plus"></i> Add
                     </button>
@@ -52,7 +53,7 @@ export default function Home() {
             {/* Product 2 */}
             <div className="col-md-6 col-lg-4">
               <div className="card product-card h-100">
-                <img src="/images/products/Luggage/Lite-Carry-On/luggage-carousel/0.avif" className="card-img-top" alt="Luggage" />
+                <img src={img("/images/products/Luggage/Lite-Carry-On/luggage-carousel/0.avif")} className="card-img-top" alt="Luggage" />
                 <div className="card-body">
                   <ProductBadge product={{ labels: ['Best Seller'] }} className="mb-2" />
                   <h5 className="card-title">Lite Carry-On</h5>
@@ -61,7 +62,7 @@ export default function Home() {
                   <div className="d-flex gap-2">
                     <button 
                       className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'lite-carry-on', title: 'Lite Carry-On', price: 168, image: '/images/products/Luggage/Lite-Carry-On/luggage-carousel/0.avif' })}
+                      onClick={() => handleQuickAdd({ id: 'lite-carry-on', title: 'Lite Carry-On', price: 168, image: img('/images/products/Luggage/Lite-Carry-On/luggage-carousel/0.avif') })}
                     >
                       <i className="fa-solid fa-cart-plus"></i> Add
                     </button>
@@ -74,7 +75,7 @@ export default function Home() {
             {/* Product 3 */}
             <div className="col-md-6 col-lg-4">
               <div className="card product-card h-100">
-                <img src="/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/0.avif" className="card-img-top" alt="travel-bag" />
+                <img src={img("/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/0.avif")} className="card-img-top" alt="travel-bag" />
                 <div className="card-body">
                   <ProductBadge product={{ labels: ['Trending', 'Sale'] }} className="mb-2" />
                   <h5 className="card-title">Road Trip Travel Set</h5>
@@ -83,7 +84,7 @@ export default function Home() {
                   <div className="d-flex gap-2">
                     <button 
                       className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'road-trip-travel-set', title: 'Road Trip Travel Set', price: 139, image: '/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/0.avif' })}
+                      onClick={() => handleQuickAdd({ id: 'road-trip-travel-set', title: 'Road Trip Travel Set', price: 139, image: img('/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/0.avif') })}
                     >
                       <i className="fa-solid fa-cart-plus"></i> Add
                     </button>
@@ -96,7 +97,7 @@ export default function Home() {
             {/* Product 4 */}
             <div className="col-md-6 col-lg-4">
               <div className="card product-card h-100">
-                <img src="/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/0.avif" className="card-img-top" alt="Duffel Bag" />
+                <img src={img("/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/0.avif")} className="card-img-top" alt="Duffel Bag" />
                 <div className="card-body">
                   <ProductBadge product={{ labels: ['Best Seller', 'Trending'] }} className="mb-2" />
                   <h5 className="card-title">Venture Ready Duffel 55L</h5>
@@ -105,7 +106,7 @@ export default function Home() {
                   <div className="d-flex gap-2">
                     <button 
                       className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'venture-ready-duffel-55l', title: 'Venture Ready Duffel 55L', price: 199, image: '/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/0.avif' })}
+                      onClick={() => handleQuickAdd({ id: 'venture-ready-duffel-55l', title: 'Venture Ready Duffel 55L', price: 199, image: img('/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/0.avif') })}
                     >
                       <i className="fa-solid fa-cart-plus"></i> Add
                     </button>
@@ -118,7 +119,7 @@ export default function Home() {
             {/* Product 5 */}
             <div className="col-md-6 col-lg-4">
               <div className="card product-card h-100">
-                <img src="/images/products/Accessories/Laptop-Caddy/accessories-carousel/0.avif" className="card-img-top" alt="Accessory" />
+                <img src={img("/images/products/Accessories/Laptop-Caddy/accessories-carousel/0.avif")} className="card-img-top" alt="Accessory" />
                 <div className="card-body">
                   <ProductBadge product={{ labels: ['Featured', 'Best Seller'] }} className="mb-2" />
                   <h5 className="card-title">Laptop Caddy</h5>
@@ -127,7 +128,7 @@ export default function Home() {
                   <div className="d-flex gap-2">
                     <button 
                       className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'laptop-caddy', title: 'Laptop Caddy', price: 12.99, image: '/images/products/Accessories/Laptop-Caddy/accessories-carousel/0.avif' })}
+                      onClick={() => handleQuickAdd({ id: 'laptop-caddy', title: 'Laptop Caddy', price: 12.99, image: img('/images/products/Accessories/Laptop-Caddy/accessories-carousel/0.avif') })}
                     >
                       <i className="fa-solid fa-cart-plus"></i> Add
                     </button>
@@ -140,7 +141,7 @@ export default function Home() {
             {/* Product 6 */}
             <div className="col-md-6 col-lg-4">
               <div className="card product-card h-100">
-                <img src="/images/products/Accessories/Tech-Kit/accessories-carousel/0.avif" className="card-img-top" alt="Accessory" />
+                <img src={img("/images/products/Accessories/Tech-Kit/accessories-carousel/0.avif")} className="card-img-top" alt="Accessory" />
                 <div className="card-body">
                   <ProductBadge product={{ labels: ['Featured', 'Trending'] }} className="mb-2" />
                   <h5 className="card-title">Tech Kit</h5>
@@ -149,7 +150,7 @@ export default function Home() {
                   <div className="d-flex gap-2">
                     <button 
                       className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'tech-kit', title: 'Tech Kit', price: 12.33, image: '/images/products/Accessories/Tech-Kit/accessories-carousel/0.avif' })}
+                      onClick={() => handleQuickAdd({ id: 'tech-kit', title: 'Tech Kit', price: 12.33, image: img('/images/products/Accessories/Tech-Kit/accessories-carousel/0.avif') })}
                     >
                       <i className="fa-solid fa-cart-plus"></i> Add
                     </button>

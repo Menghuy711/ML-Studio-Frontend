@@ -1,3 +1,4 @@
+import { img } from "../config";
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="col-lg-4">
             <Link to="/" className="footer-logo d-flex justify-content-center align-items-end" style={{ width: '200px', height: '90px' }}>
-              <img src="/images/logo/ML-Studio-Logo.png" alt="ML Studio Logo" />
+              <img src={img("/images/logo/ML-Studio-Logo.png")} alt="ML Studio Logo" />
             </Link>
             <p className="footer-text mt-3">
               Premium bags designed for modern lifestyles. Combining elegance, minimal style, and comfort in every situation.

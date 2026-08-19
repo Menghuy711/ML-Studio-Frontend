@@ -1,3 +1,4 @@
+import { img } from "../config";
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
@@ -98,7 +99,7 @@ export default function CartOffcanvas() {
                     className="img-fluid rounded"
                     style={{ width: '60px', height: '60px', objectFit: 'cover' }}
                     onError={(e) => {
-                      e.currentTarget.src = '/images/products/Backpacks/Lite-Travel-Pack-30L/backpacks-carousel/0.avif';
+                      e.currentTarget.src = img('/images/products/Backpacks/Lite-Travel-Pack-30L/backpacks-carousel/0.avif');
                     }}
                   />
                   <div className="ms-3 grow">
@@ -147,7 +148,7 @@ export default function CartOffcanvas() {
                       className="img-fluid rounded"
                       style={{ width: '80px', height: '80px', objectFit: 'cover' }}
                       onError={(e) => {
-                        e.currentTarget.src = '/images/products/Backpacks/Lite-Travel-Pack-30L/backpacks-carousel/0.avif';
+                        e.currentTarget.src = img('/images/products/Backpacks/Lite-Travel-Pack-30L/backpacks-carousel/0.avif');
                       }}
                     />
                     <div className="ms-3 grow">

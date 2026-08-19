@@ -1,3 +1,4 @@
+import { img } from "../config";
 import { useState, useMemo, useEffect } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -24,20 +25,20 @@ const CATEGORY_IMAGES = {
     'backpack-05.avif',
     'backpack-06.avif',
     'backpack-07.avif',
-  ].map((f) => `/images/products/Backpacks/${f}`),
+  ].map((f) => img(`/images/products/Backpacks/${f}`)),
   luggage: [
     'luggage-01.avif',
     'luggage-02.avif',
     'luggage-03.avif',
     'luggage-04.avif',
-  ].map((f) => `/images/products/Luggage/${f}`),
+  ].map((f) => img(`/images/products/Luggage/${f}`)),
   travelbag: [
     'travel-bag-01.avif',
     'travel-bag-02.avif',
     'travel-bag-03.avif',
     'travel-bag-04.avif',
     'travel-bag-05.avif',
-  ].map((f) => `/images/products/Travel-bags/${f}`),
+  ].map((f) => img(`/images/products/Travel-bags/${f}`)),
   sling: [
     'sling-01.avif',
     'sling-02.avif',
@@ -46,7 +47,7 @@ const CATEGORY_IMAGES = {
     'sling-05.avif',
     'sling-06.avif',
     'sling-07.avif',
-  ].map((f) => `/images/products/Sling-bags/${f}`),
+  ].map((f) => img(`/images/products/Sling-bags/${f}`)),
   tote: [
     'tote-bag-01.avif',
     'tote-bag-02.avif',
@@ -54,13 +55,13 @@ const CATEGORY_IMAGES = {
     'tote-bag-04.avif',
     'tote-bag-05.avif',
     'tote-bag-06.avif',
-  ].map((f) => `/images/products/Tote-bags/${f}`),
+  ].map((f) => img(`/images/products/Tote-bags/${f}`)),
   accessories: [
     'accessories-01.avif',
     'accessories-02.avif',
     'accessories-03.avif',
     'accessories-04.avif',
-  ].map((f) => `/images/products/Accessories/${f}`),
+  ].map((f) => img(`/images/products/Accessories/${f}`)),
 };
 
 export default function ProductDetails() {

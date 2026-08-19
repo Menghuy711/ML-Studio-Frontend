@@ -1,30 +1,31 @@
+import { img } from "../config";
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
-    image: '/images/banner-slideshow/banner-01.webp',
+    image: img('/images/banner-slideshow/banner-01.webp'),
     heading: 'Luxury Bags Collection',
     subtitle: 'Premium Collections Made For Modern Lifestyle',
     buttonText: 'Shop Now',
     objectPosition: 'left center',
   },
   {
-    image: '/images/banner-slideshow/banner-02.avif',
+    image: img('/images/banner-slideshow/banner-02.avif'),
     heading: 'Travel In Style',
     subtitle: 'Discover premium luggage designed for every journey',
     buttonText: 'Explore Collection',
     objectPosition: 'center 45%',
   },
   {
-    image: '/images/banner-slideshow/banner-03.avif',
+    image: img('/images/banner-slideshow/banner-03.avif'),
     heading: 'Premium Quality',
     subtitle: 'Designed with style, comfort, and durability in mind',
     buttonText: 'Shop Collection',
     objectPosition: '60% center',
   },
   {
-    image: '/images/banner-slideshow/banner-04.avif',
+    image: img('/images/banner-slideshow/banner-04.avif'),
     heading: 'Your Style, Your Journey',
     subtitle: 'Find the perfect bag for every destination',
     buttonText: 'Discover More',

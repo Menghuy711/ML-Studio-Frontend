@@ -1,3 +1,4 @@
+import { img } from "../config";
 import { Link } from 'react-router-dom';
 
 export default function About() {
@@ -17,7 +18,7 @@ export default function About() {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <img
-                src="/images/IMG_0494.JPG"
+                src={img("/images/IMG_0494.JPG")}
                 className="img-fluid rounded-4 shadow"
                 alt="Our Story"
               />
@@ -54,7 +55,7 @@ export default function About() {
             <div className="col-md-4">
               <div className="info-card">
                 <img 
-                  src="/images/cambodia-flag.avif" 
+                  src={img("/images/cambodia-flag.avif")} 
                   alt="Designed in Cambodia" 
                   style={{
                     width: '100px',
@@ -75,7 +76,7 @@ export default function About() {
             <div className="col-md-4">
               <div className="info-card">
                 <img 
-                  src="/images/Making product last.jpg" 
+                  src={img("/images/Making product last.jpg")} 
                   alt="Making products that last" 
                   style={{
                     width: '100px',
@@ -96,7 +97,7 @@ export default function About() {
             <div className="col-md-4">
               <div className="info-card">
                 <img 
-                  src="/images/recycle.avif" 
+                  src={img("/images/recycle.avif")} 
                   alt="Recycled Materials" 
                   style={{
                     width: '100px',
