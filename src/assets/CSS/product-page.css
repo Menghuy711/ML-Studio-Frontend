@@ -49,25 +49,6 @@
 
 
 
-/* title style (backpack, ....)*/
-.section-title{
-    font-size:2rem;
-    font-weight:700;
-    position:relative;
-    padding-left:20px;
-    scroll-margin-top: 170px;
-}
-
-.section-title::before{
-    content:'';
-    width:6px;
-    height:100%;
-    background:#D4AF37;
-    position:absolute;
-    left:0;
-    top:0;
-}
-
 /* product detail ================================ CSS */
 .card{
     transition:0.3s;
@@ -80,11 +61,9 @@
 .product-hero{
     color: white;
     padding: 100px 0;
-    background-image: url(/ML-Studio-Frontend/images/logo/Product-banner.avif);
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
-    
 }
 
 /* product color selector ================================ CSS */

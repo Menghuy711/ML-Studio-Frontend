@@ -1,22 +1,21 @@
-import { img } from "../config";
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import ProductBadge from '../components/ProductBadge';
+import { products } from '../data/products';
+import ProductCard from '../components/ProductCard';
 import HeroSlider from '../components/HeroSlider';
-import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+const FEATURED_IDS = [
+  'carryology-essentials-sling',
+  'lite-carry-on',
+  'road-trip-travel-set',
+  'venture-ready-duffel-55l',
+  'laptop-caddy',
+  'tech-kit',
+];
 
 export default function Home() {
   const { addToCart } = useContext(CartContext);
-
-  const handleQuickAdd = (product) => {
-    addToCart(product);
-    const offcanvasEl = document.getElementById('cartOffcanvas');
-    if (offcanvasEl) {
-      const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
-      offcanvas.show();
-    }
-  };
+  const featured = FEATURED_IDS.map((id) => products.find((p) => p.id === id)).filter(Boolean);
 
   return (
     <>
@@ -28,137 +27,14 @@ export default function Home() {
         <div className="container">
           <h2 className="text-center mb-5">Featured Bags</h2>
           <div className="row g-3">
-            {/* Product 1 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="card product-card h-100">
-                <img src={img("/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/0.avif")} className="card-img-top" alt="sling" />
-                <div className="card-body">
-                  <ProductBadge product={{ labels: ['Best Seller', 'New Arrival'] }} className="mb-2" />
-                  <h5 className="card-title">Carryology Essentials Sling</h5>
-                  <p className="card-text">Stylish and durable sling for daily use and keep you confidence.</p>
-                  <h4 className="price">$35</h4>
-                  <div className="d-flex gap-2">
-                    <button 
-                      className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'carryology-essentials-sling', title: 'Carryology Essentials Sling', price: 35, image: img('/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/0.avif') })}
-                    >
-                      <i className="fa-solid fa-cart-plus"></i> Add
-                    </button>
-                    <Link to="/products/carryology-essentials-sling" className="btn gold-btn w-50">Details</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 2 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="card product-card h-100">
-                <img src={img("/images/products/Luggage/Lite-Carry-On/luggage-carousel/0.avif")} className="card-img-top" alt="Luggage" />
-                <div className="card-body">
-                  <ProductBadge product={{ labels: ['Best Seller'] }} className="mb-2" />
-                  <h5 className="card-title">Lite Carry-On</h5>
-                  <p className="card-text">A lightweight travel bag that’s engineered to glide and travel everywhere with you.</p>
-                  <h4 className="price">$168</h4>
-                  <div className="d-flex gap-2">
-                    <button 
-                      className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'lite-carry-on', title: 'Lite Carry-On', price: 168, image: img('/images/products/Luggage/Lite-Carry-On/luggage-carousel/0.avif') })}
-                    >
-                      <i className="fa-solid fa-cart-plus"></i> Add
-                    </button>
-                    <Link to="/products/lite-carry-on" className="btn gold-btn w-50">Details</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 3 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="card product-card h-100">
-                <img src={img("/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/0.avif")} className="card-img-top" alt="travel-bag" />
-                <div className="card-body">
-                  <ProductBadge product={{ labels: ['Trending', 'Sale'] }} className="mb-2" />
-                  <h5 className="card-title">Road Trip Travel Set</h5>
-                  <p className="card-text">The ultimate road trip pair for throwing and going without compromising on function.</p>
-                  <h4 className="price">$139</h4>
-                  <div className="d-flex gap-2">
-                    <button 
-                      className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'road-trip-travel-set', title: 'Road Trip Travel Set', price: 139, image: img('/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/0.avif') })}
-                    >
-                      <i className="fa-solid fa-cart-plus"></i> Add
-                    </button>
-                    <Link to="/products/road-trip-travel-set" className="btn gold-btn w-50">Details</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 4 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="card product-card h-100">
-                <img src={img("/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/0.avif")} className="card-img-top" alt="Duffel Bag" />
-                <div className="card-body">
-                  <ProductBadge product={{ labels: ['Best Seller', 'Trending'] }} className="mb-2" />
-                  <h5 className="card-title">Venture Ready Duffel 55L</h5>
-                  <p className="card-text">A rugged take on the traditional weekender, this duffel is ready for outdoor moves.</p>
-                  <h4 className="price">$199</h4>
-                  <div className="d-flex gap-2">
-                    <button 
-                      className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'venture-ready-duffel-55l', title: 'Venture Ready Duffel 55L', price: 199, image: img('/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/0.avif') })}
-                    >
-                      <i className="fa-solid fa-cart-plus"></i> Add
-                    </button>
-                    <Link to="/products/venture-ready-duffel-55l" className="btn gold-btn w-50">Details</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 5 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="card product-card h-100">
-                <img src={img("/images/products/Accessories/Laptop-Caddy/accessories-carousel/0.avif")} className="card-img-top" alt="Accessory" />
-                <div className="card-body">
-                  <ProductBadge product={{ labels: ['Featured', 'Best Seller'] }} className="mb-2" />
-                  <h5 className="card-title">Laptop Caddy</h5>
-                  <p className="card-text">Keep your laptop organized and protected in this sleek, durable caddy.</p>
-                  <h4 className="price">$12.99</h4>
-                  <div className="d-flex gap-2">
-                    <button 
-                      className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'laptop-caddy', title: 'Laptop Caddy', price: 12.99, image: img('/images/products/Accessories/Laptop-Caddy/accessories-carousel/0.avif') })}
-                    >
-                      <i className="fa-solid fa-cart-plus"></i> Add
-                    </button>
-                    <Link to="/products/laptop-caddy" className="btn gold-btn w-50">Details</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Product 6 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="card product-card h-100">
-                <img src={img("/images/products/Accessories/Tech-Kit/accessories-carousel/0.avif")} className="card-img-top" alt="Accessory" />
-                <div className="card-body">
-                  <ProductBadge product={{ labels: ['Featured', 'Trending'] }} className="mb-2" />
-                  <h5 className="card-title">Tech Kit</h5>
-                  <p className="card-text">Keep your cables and chargers organized in this compact travel pouch.</p>
-                  <h4 className="price">$12.33</h4>
-                  <div className="d-flex gap-2">
-                    <button 
-                      className="btn btn-outline-dark w-50"
-                      onClick={() => handleQuickAdd({ id: 'tech-kit', title: 'Tech Kit', price: 12.33, image: img('/images/products/Accessories/Tech-Kit/accessories-carousel/0.avif') })}
-                    >
-                      <i className="fa-solid fa-cart-plus"></i> Add
-                    </button>
-                    <Link to="/products/tech-kit" className="btn gold-btn w-50">Details</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {featured.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={addToCart}
+                className="col-md-6 col-lg-4"
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -194,7 +70,8 @@ export default function Home() {
                   <i className="fa-solid fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
                   <i className="fa-solid fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
                   <i className="fa-solid fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
-                  <i className="fa-solid fa-star-half fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
+                  <i className="fa-solid fa-star-half-stroke fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
+                  <i className="fa-regular fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
                   <p className="pt-3">"Excellent quality and very stylish bags. Highly recommended!"</p>
                   <h6>- Lor Menghuy</h6>
                 </div>
@@ -222,7 +99,7 @@ export default function Home() {
                   <i className="fa-solid fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
                   <i className="fa-solid fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
                   <i className="fa-solid fa-star fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
-                  <i className="fa-solid fa-star-half fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
+                  <i className="fa-solid fa-star-half-stroke fa-lg" style={{ color: 'rgb(255, 212, 59)' }}></i>
                   <p className="pt-3">"The best bag store I've found online!"</p>
                   <h6>- Chhim BunChhun</h6>
                 </div>

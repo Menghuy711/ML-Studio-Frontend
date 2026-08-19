@@ -26,7 +26,7 @@ export default function Layout() {
         setActiveModal={setActiveModal} 
       />
       
-      <CartOffcanvas />
+      <CartOffcanvas onOpenLogin={() => setActiveModal('login')} />
     </>
   );
 }

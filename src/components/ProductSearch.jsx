@@ -52,7 +52,6 @@ export default function ProductSearch({
         p.category,
         categoryTitle[p.category],
         p.desc,
-        ...(Array.isArray(p.tags) ? p.tags : []),
       ]
         .filter(Boolean)
         .join(' ')

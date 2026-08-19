@@ -1,4 +1,3 @@
-import { img } from "../config";
 import { useState, useMemo, useEffect } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -7,7 +6,7 @@ import { products } from '../data/products';
 import ColorSelector from '../components/ColorSelector';
 import ProductCarousel from '../components/ProductCarousel';
 import ProductBadge from '../components/ProductBadge';
-import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { openCartOffcanvas } from '../utils/cart';
 
 const DEFAULT_COLORS = [
   { name: 'Black', swatch: '#2B2B2B' },
@@ -16,54 +15,6 @@ const DEFAULT_COLORS = [
   { name: 'Clay', swatch: '#C1653B' },
 ];
 
-const CATEGORY_IMAGES = {
-  backpacks: [
-    'backpack-01.avif',
-    'backpack-02.avif',
-    'backpack-03.png',
-    'backpack-04.png',
-    'backpack-05.avif',
-    'backpack-06.avif',
-    'backpack-07.avif',
-  ].map((f) => img(`/images/products/Backpacks/${f}`)),
-  luggage: [
-    'luggage-01.avif',
-    'luggage-02.avif',
-    'luggage-03.avif',
-    'luggage-04.avif',
-  ].map((f) => img(`/images/products/Luggage/${f}`)),
-  travelbag: [
-    'travel-bag-01.avif',
-    'travel-bag-02.avif',
-    'travel-bag-03.avif',
-    'travel-bag-04.avif',
-    'travel-bag-05.avif',
-  ].map((f) => img(`/images/products/Travel-bags/${f}`)),
-  sling: [
-    'sling-01.avif',
-    'sling-02.avif',
-    'sling-03.avif',
-    'sling-04.avif',
-    'sling-05.avif',
-    'sling-06.avif',
-    'sling-07.avif',
-  ].map((f) => img(`/images/products/Sling-bags/${f}`)),
-  tote: [
-    'tote-bag-01.avif',
-    'tote-bag-02.avif',
-    'tote-bag-03.avif',
-    'tote-bag-04.avif',
-    'tote-bag-05.avif',
-    'tote-bag-06.avif',
-  ].map((f) => img(`/images/products/Tote-bags/${f}`)),
-  accessories: [
-    'accessories-01.avif',
-    'accessories-02.avif',
-    'accessories-03.avif',
-    'accessories-04.avif',
-  ].map((f) => img(`/images/products/Accessories/${f}`)),
-};
-
 export default function ProductDetails() {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
@@ -71,18 +22,27 @@ export default function ProductDetails() {
   const product =
     products.find((p) => p.id === id) ||
     products.find((p) => p.slug === id) ||
-    products[0];
+    null;
 
   const [selectedColor, setSelectedColor] = useState(null);
 
-  const related = products
-    .filter((p) => p.id !== product.id)
-    .slice(0, 3);
+  const related = useMemo(() => {
+    if (!product) return [];
+    const others = products.filter((p) => p.id !== product.id);
+    const sameCategory = others.filter((p) => p.category === product.category);
+    const rest = others.filter((p) => p.category !== product.category);
+    return [...sameCategory, ...rest].slice(0, 3);
+  }, [product]);
 
-  const features = product.features || [];
+  const features = product?.features || [];
 
-  const colors = (product.colors && product.colors.length ? product.colors : DEFAULT_COLORS).map(
-    (c) => ({ ...c, image: c.image || product.image })
+  const colors = useMemo(
+    () =>
+      (product?.colors && product.colors.length
+        ? product.colors
+        : DEFAULT_COLORS
+      ).map((c) => ({ ...c, image: c.image || product?.image })),
+    [product]
   );
 
   const activeColor = selectedColor || colors[0];
@@ -94,9 +54,12 @@ export default function ProductDetails() {
 
   // Sync the selected color with the ?color= URL param (e.g. clicking a cart item)
   useEffect(() => {
+    if (!product) return;
     const colorName = searchParams.get('color');
     const variants =
-      product.colors && product.colors.length ? product.colors : DEFAULT_COLORS;
+      product.colors && product.colors.length
+        ? product.colors
+        : DEFAULT_COLORS;
     const match = colorName
       ? variants.find(
           (c) =>
@@ -110,30 +73,39 @@ export default function ProductDetails() {
   const colorImage = activeColor?.image;
 
   const galleryImages = useMemo(() => {
+    if (!product) return [];
     const base =
       product.images && product.images.length
         ? product.images
-        : [product.image, ...(CATEGORY_IMAGES[product.category] || []).filter((src) => src !== product.image)];
+        : [product.image];
     if (colorImage && colorImage !== product.image) {
       return [colorImage, ...base.filter((src) => src !== colorImage)];
     }
     return base;
   }, [product, colorImage]);
 
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-    // Add the product with the selected color variant to cart
+  if (!product) {
+    return (
+      <section className="container py-5 text-center">
+        <i className="fa-solid fa-box-open fa-3x text-muted mb-3"></i>
+        <h1 className="fw-bold">Product Not Found</h1>
+        <p className="text-muted mb-4">
+          Sorry, we couldn't find the product you were looking for.
+        </p>
+        <Link to="/products" className="btn gold-btn">
+          ← Back to Products
+        </Link>
+      </section>
+    );
+  }
+
+  const handleAddToCart = () => {
     addToCart({
       ...product,
       color: activeColor?.name,
       image: activeColor?.image || product.image,
     });
-    // Open the cart offcanvas
-    const offcanvasEl = document.getElementById('cartOffcanvas');
-    if (offcanvasEl) {
-      const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
-      offcanvas.show();
-    }
+    openCartOffcanvas();
   };
 
   return (
@@ -188,9 +160,9 @@ export default function ProductDetails() {
               ))}
             </ul>
 
-            <a href="#" className="btn green-btn btn-lg mt-3" onClick={handleAddToCart}>
+            <button type="button" className="btn green-btn btn-lg mt-3" onClick={handleAddToCart}>
               Add To Cart
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -198,21 +170,27 @@ export default function ProductDetails() {
       {/* Related Products */}
       <section className="container py-5">
         <h2 className="text-center mb-5">Related Products</h2>
-        <div className="row g-4">
-          {related.map((item) => (
-            <div className="col-md-4" key={item.id}>
-              <Link to={`/products/${item.id}`} className="text-decoration-none text-dark">
-                <div className="card h-100">
-                  <img src={item.image} className="card-img-top" alt={item.title} />
-<div className="card-body">
-                  <ProductBadge product={item} className="mb-2" />
-                  <h5>{item.title}</h5>
-                </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+        {related.length === 0 ? (
+          <p className="text-center text-muted">
+            No related products available right now.
+          </p>
+        ) : (
+          <div className="row g-4">
+            {related.map((item) => (
+              <div className="col-md-4" key={item.id}>
+                <Link to={`/products/${item.id}`} className="text-decoration-none text-dark">
+                  <div className="card h-100">
+                    <img src={item.image} className="card-img-top" alt={item.title} loading="lazy" />
+                    <div className="card-body">
+                      <ProductBadge product={item} className="mb-2" />
+                      <h5>{item.title}</h5>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </>
   );

@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useCallback, useMemo } from 'react';
 import account from '../data/account';
 
+// oxlint-disable-next-line react/only-export-components
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -18,7 +19,7 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = (username, password) => {
+  const login = useCallback((username, password) => {
     const validUser =
       username.trim().toLowerCase() === account.username.toLowerCase() &&
       password === account.password;
@@ -36,18 +37,19 @@ export function AuthProvider({ children }) {
     localStorage.setItem('currentUser', JSON.stringify(user));
     setCurrentUser(user);
     return { success: true };
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('currentUser');
     setCurrentUser(null);
-  };
+  }, []);
+
+  const value = useMemo(
+    () => ({ currentUser, isLoggedIn: !!currentUser, login, logout }),
+    [currentUser, login, logout]
+  );
 
   return (
-    <AuthContext.Provider
-      value={{ currentUser, isLoggedIn: !!currentUser, login, logout }}
-    >
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   );
 }

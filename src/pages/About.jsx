@@ -1,11 +1,13 @@
 import { img } from "../config";
-import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
     <>
       {/* ABOUT Section */}
-      <section className="about-hero">
+      <section
+        className="about-hero"
+        style={{ backgroundImage: `url(${img('/images/logo/about01-banner.avif')})` }}
+      >
         <div className="container text-center">
           <h1 className="display-3 fw-bold">About ML Studio</h1>
           <p className="lead">Crafted for Style. Designed for Everyday Adventure.</p>
@@ -21,12 +23,11 @@ export default function About() {
                 src={img("/images/IMG_0494.JPG")}
                 className="img-fluid rounded-4 shadow"
                 alt="Our Story"
+                loading="lazy"
               />
             </div>
             <div className="col-lg-6">
-              <h2 className="fw-bold mb-5 mb-lg-5 mb-md-5 mt-3 mt-md-3 mt-lg-0">
-                Our Story
-              </h2>
+              <h2 className="fw-bold mt-3 mb-5">Our Story</h2>
               <p>
                 ML Studio was founded with a simple mission: to create stylish, comfort, 
                 and premium bags for modern lifestyles.

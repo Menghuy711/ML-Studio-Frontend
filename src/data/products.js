@@ -1,11 +1,11 @@
 import { img } from "../config";
 export const categories = [
-  { id: 'backpacks', title: 'Backpacks', mt: false },
-  { id: 'luggage', title: 'Luggage', mt: false },
-  { id: 'travelbag', title: 'Travel Bags', mt: false },
-  { id: 'sling', title: 'Sling & Crossbody Bags', mt: false },
-  { id: 'tote', title: 'Tote Bags', mt: true },
-  { id: 'accessories', title: 'Accessories', mt: true },
+  { id: 'backpacks', title: 'Backpacks' },
+  { id: 'luggage', title: 'Luggage' },
+  { id: 'travelbag', title: 'Travel Bags' },
+  { id: 'sling', title: 'Sling & Crossbody Bags' },
+  { id: 'tote', title: 'Tote Bags' },
+  { id: 'accessories', title: 'Accessories' },
 ];
 
 export const PRODUCT_LABELS = [
@@ -53,8 +53,6 @@ export const products = [
       img('/images/products/Backpacks/Lite-Travel-Pack-30L/backpacks-carousel/14.avif'),
       img('/images/products/Backpacks/Lite-Travel-Pack-30L/backpacks-carousel/15.avif'),
     ],
-    badge: 'New Arrival',
-    badgeClass: 'bg-dark',
     labels: ['Best Seller', 'New Arrival'],
     features: [
       'Folds out flat for easy packing',
@@ -93,8 +91,6 @@ export const products = [
       img('/images/products/Backpacks/Classic-Rolltop/backpacks-carousel/11.avif'),
       img('/images/products/Backpacks/Classic-Rolltop/backpacks-carousel/12.avif'),
     ],
-    badge: 'Bestseller',
-    badgeClass: 'bg-danger',
     labels: ['Best Seller', 'Featured'],
     features: [
       'Roll-top opening with a custom adjustable metal hook closure',
@@ -133,8 +129,6 @@ export const products = [
       img('/images/products/Backpacks/Transit-Workpack-20L/backpacks-carousel/11.avif'),
       img('/images/products/Backpacks/Transit-Workpack-20L/backpacks-carousel/12.avif'),
     ],
-    badge: 'Trending',
-    badgeClass: 'bg-success',
     labels: ['Trending', 'New Arrival'],
     features: [
       'Separate laptop section holds devices up to 16”',
@@ -173,8 +167,6 @@ export const products = [
       img('/images/products/Backpacks/Classic-Daypack/backpacks-carousel/9.avif'),
       img('/images/products/Backpacks/Classic-Daypack/backpacks-carousel/10.avif'),
     ],
-    badge: 'Premium',
-    badgeClass: 'bg-dark',
     labels: ['Featured', 'Trending'],
     features: [
       'Drop-down zip opening for easy packing',
@@ -211,8 +203,6 @@ export const products = [
       img('/images/products/Backpacks/Lite-Ready-Pack/backpacks-carousel/11.avif'),
       img('/images/products/Backpacks/Lite-Ready-Pack/backpacks-carousel/12.avif'),
     ],
-    badge: 'New',
-    badgeClass: 'bg-warning',
     labels: ['New Arrival', 'Sale'],
     features: [
       'Durable ripstop is 3x lighter than our core fabrics',
@@ -253,8 +243,6 @@ export const products = [
       img('/images/products/Backpacks/Cinch-Minipack/backpacks-carousel/10.avif'),
       img('/images/products/Backpacks/Cinch-Minipack/backpacks-carousel/11.avif'),
     ],
-    badge: 'Must Have',
-    badgeClass: 'bg-info text-dark',
     labels: ['Featured', 'Limited Edition'],
     features: [
       'Foldover closure that snaps in place',
@@ -291,8 +279,6 @@ export const products = [
       img('/images/products/Backpacks/Via-Workpack/backpacks-carousel/8.avif'),
       img('/images/products/Backpacks/Via-Workpack/backpacks-carousel/9.avif'),
     ],
-    badge: 'Classic',
-    badgeClass: 'bg-secondary',
     labels: ['Featured'],
     features: [
       'Padded 16” laptop sleeve',
@@ -335,8 +321,6 @@ export const products = [
       img('/images/products/Luggage/Lite-Carry-On/luggage-carousel/14.avif'),
       img('/images/products/Luggage/Lite-Carry-On/luggage-carousel/15.avif'),
     ],
-    badge: 'Bestseller',
-    badgeClass: 'bg-danger',
     labels: ['Best Seller'],
     features: [
       'Lightweight, compressible ripstop nylon shell that’s designed to wear well',
@@ -380,8 +364,6 @@ export const products = [
       img('/images/products/Luggage/Transit-Carry-On/luggage-carousel/15.avif'),
       img('/images/products/Luggage/Transit-Carry-On/luggage-carousel/16.avif'),
     ],
-    badge: 'Trending',
-    badgeClass: 'bg-success',
     labels: ['New Arrival', 'Trending'],
     features: [
       'Our Transit Carry-On is sized to ensure global airline compatibility, and the Transit Carry-On Large to maximize capacity if you choose packing space over guaranteed carry-on',
@@ -425,8 +407,6 @@ export const products = [
       img('/images/products/Luggage/Transit-Check-In-Large/luggage-carousel/15.avif'),
       img('/images/products/Luggage/Transit-Check-In-Large/luggage-carousel/16.avif'),
     ],
-    badge: 'Value Set',
-    badgeClass: 'bg-warning',
     labels: ['Featured', 'Sale'],
     features: [
       'Custom-designed telescopic handle with an underside push button and three height settings',
@@ -472,8 +452,6 @@ export const products = [
       img('/images/products/Luggage/Transit-Check-In/luggage-carousel/16.avif'),
       img('/images/products/Luggage/Transit-Check-In/luggage-carousel/17.avif'),
     ],
-    badge: 'Premium',
-    badgeClass: 'bg-dark',
     labels: ['Featured'],
     features: [
       'Custom-designed telescopic handle with an underside push button and two height settings',
@@ -510,8 +488,6 @@ export const products = [
       img('/images/products/Travel-bags/Lite-Duffel-30L/travel-bags-carousel/9.avif'),
       img('/images/products/Travel-bags/Lite-Duffel-30L/travel-bags-carousel/10.avif'),
     ],
-    badge: 'Value Set',
-    badgeClass: 'bg-warning',
     labels: ['Sale'],
     features: [
       'Super-lightweight, compressible fabric',
@@ -541,8 +517,6 @@ export const products = [
       img('/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/3.avif'),
       img('/images/products/Travel-bags/Road-Trip-Travel-Set/travel-bags-carousel/2025-bundles-gallery-road-trip.avif'),
     ],
-    badge: 'Trending',
-    badgeClass: 'bg-success',
     labels: ['Trending', 'Sale'],
     features: [
       'Pack in a snap',
@@ -579,8 +553,6 @@ export const products = [
       img('/images/products/Travel-bags/Classic-Duffel-45L/travel-bags-carousel/11.avif'),
       img('/images/products/Travel-bags/Classic-Duffel-45L/travel-bags-carousel/12.avif'),
     ],
-    badge: 'New Arrival',
-    badgeClass: 'bg-dark',
     labels: ['New Arrival', 'Best Seller'],
     features: [
       'An updated version of our Classic Weekender',
@@ -620,8 +592,6 @@ export const products = [
       img('/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/11.avif'),
       img('/images/products/Travel-bags/Venture-Ready-Duffel-55L/travel-bags-carousel/12.avif'),
     ],
-    badge: 'Bestseller',
-    badgeClass: 'bg-danger',
     labels: ['Best Seller', 'Trending'],
     features: [
       'An updated version of our Venture Duffel',
@@ -662,8 +632,6 @@ export const products = [
       img('/images/products/Travel-bags/Classic-Getaway-Bag/travel-bags-carousel/10.avif'),
       img('/images/products/Travel-bags/Classic-Getaway-Bag/travel-bags-carousel/11.avif'),
     ],
-    badge: 'Premium',
-    badgeClass: 'bg-secondary',
     labels: ['Featured', 'New Arrival'],
     features: [
       'Structured folded webbing tote handles',
@@ -698,8 +666,6 @@ export const products = [
       img('/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/8.avif'),
       img('/images/products/Sling-bags/Carryology-Essentials-Sling/sling-bags-carousel/9.avif'),
     ],
-    badge: 'New Arrival',
-    badgeClass: 'bg-warning',
     labels: ['Best Seller', 'New Arrival'],
     features: [
       'A Carryology Essentials edition, celebrating best-in-class design',
@@ -742,8 +708,6 @@ export const products = [
       img('/images/products/Sling-bags/Venture-Ready-Sling-2.5L/sling-bags-carousel/12.avif'),
       img('/images/products/Sling-bags/Venture-Ready-Sling-2.5L/sling-bags-carousel/13.avif'),
     ],
-    badge: 'Trending',
-    badgeClass: 'bg-success',
     labels: ['Trending', 'New Arrival'],
     features: [
       'Front pocket with internal divider',
@@ -781,8 +745,6 @@ export const products = [
       img('/images/products/Sling-bags/Venture-Sling-6L/sling-bags-carousel/11.avif'),
       img('/images/products/Sling-bags/Venture-Sling-6L/sling-bags-carousel/12.avif'),
     ],
-    badge: 'Must Have',
-    badgeClass: 'bg-info text-dark',
     labels: ['Featured'],
     features: [
       'Main compartment fits a water bottle, windbreaker and more',
@@ -822,8 +784,6 @@ export const products = [
       img('/images/products/Sling-bags/Lite-Belt-Bag/sling-bags-carousel/9.avif'),
       img('/images/products/Sling-bags/Lite-Belt-Bag/sling-bags-carousel/10.avif'),
     ],
-    badge: 'Classic',
-    badgeClass: 'bg-secondary',
     labels: ['Featured', 'Trending'],
     features: [
       'Durable ripstop is 3x lighter than our core fabrics',
@@ -863,8 +823,6 @@ export const products = [
       img('/images/products/Sling-bags/Venture-Sling-10L/sling-bags-carousel/12.avif'),
       img('/images/products/Sling-bags/Venture-Sling-10L/sling-bags-carousel/13.avif'),
     ],
-    badge: 'New',
-    badgeClass: 'bg-warning',
     labels: ['New Arrival', 'Sale'],
     features: [
       'Fits a variety of camera setups',
@@ -902,8 +860,6 @@ export const products = [
       img('/images/products/Sling-bags/City-Pouch/sling-bags-carousel/9.avif'),
       img('/images/products/Sling-bags/City-Pouch/sling-bags-carousel/10.avif'),
     ],
-    badge: 'Bestseller',
-    badgeClass: 'bg-danger',
     labels: ['Best Seller', 'Limited Edition'],
     features: [
       'Front zip compartment for frequently used items',
@@ -942,8 +898,6 @@ export const products = [
       img('/images/products/Sling-bags/Laneway-Crescent-Bag-7L/sling-bags-carousel/10.avif'),
       img('/images/products/Sling-bags/Laneway-Crescent-Bag-7L/sling-bags-carousel/11.avif'),
     ],
-    badge: 'Premium',
-    badgeClass: 'bg-dark',
     labels: ['Featured'],
     features: [
       'Adjustable webbing strap with metal hardware',
@@ -980,8 +934,6 @@ export const products = [
       img('/images/products/Accessories/Laptop-Caddy/accessories-carousel/9.avif'),
       
     ],
-    badge: 'Must Have',
-    badgeClass: 'bg-info text-dark',
     labels: ['Featured', 'Best Seller'],
     features: [
       'Fits laptops up to 14”',
@@ -1023,8 +975,6 @@ export const products = [
       img('/images/products/Accessories/Tech-Kit/accessories-carousel/8.avif'),
       img('/images/products/Accessories/Tech-Kit/accessories-carousel/9.avif'),
     ],
-    badge: 'Daily Use',
-    badgeClass: 'bg-secondary',
     labels: ['Featured', 'Trending'],
     features: [
       'Fits all your tech accessories in one place',
@@ -1063,8 +1013,6 @@ export const products = [
       img('/images/products/Accessories/Toiletry-Kit-Plus/accessories-carousel/9.avif'),
       img('/images/products/Accessories/Toiletry-Kit-Plus/accessories-carousel/10.avif'),
     ],
-    badge: 'New',
-    badgeClass: 'bg-success',
     labels: ['New Arrival', 'Sale'],
     features: [
       'Larger size, for longer trips and bigger products',
@@ -1098,8 +1046,6 @@ export const products = [
       img('/images/products/Accessories/Hanging-Toiletry-Kit/accessories-carousel/7.avif'),
       img('/images/products/Accessories/Hanging-Toiletry-Kit/accessories-carousel/8.avif'),
     ],
-    badge: 'Must Have',
-    badgeClass: 'bg-info text-dark',
     labels: ['Featured'],
     features: [
       'Sits upright, hangs or folds out flat for easy access',
@@ -1139,8 +1085,6 @@ export const products = [
       img('/images/products/Tote-bags/Tokyo-Wonder-Tote-15L/tote-bags-carousel/13.avif'),
       img('/images/products/Tote-bags/Tokyo-Wonder-Tote-15L/tote-bags-carousel/14.avif'),
     ],
-    badge: 'New Arrival',
-    badgeClass: 'bg-dark',
     labels: ['Best Seller', 'New Arrival'],
     features: [
       'Padded laptop sleeve protects devices up to 16"',
@@ -1180,8 +1124,6 @@ export const products = [
       img('/images/products/Tote-bags/Market-Tote/tote-bags-carousel/9.avif'),
       img('/images/products/Tote-bags/Market-Tote/tote-bags-carousel/10.avif'),
     ],
-    badge: 'Trending',
-    badgeClass: 'bg-success',
     labels: ['Trending'],
     features: [
       'Stands upright when open',
@@ -1222,8 +1164,6 @@ export const products = [
       img('/images/products/Tote-bags/Laneway-Totepack/tote-bags-carousel/13.avif'),
       img('/images/products/Tote-bags/Laneway-Totepack/tote-bags-carousel/14.avif'),
     ],
-    badge: 'Premium',
-    badgeClass: 'bg-dark',
     labels: ['Featured'],
     features: [
       'Durable nylon fabrics made from recycled ocean waste',
@@ -1260,8 +1200,6 @@ export const products = [
       img('/images/products/Tote-bags/Market-Tote-Plus/tote-bags-carousel/9.avif'),
       img('/images/products/Tote-bags/Market-Tote-Plus/tote-bags-carousel/10.avif'),
     ],
-    badge: 'Classic',
-    badgeClass: 'bg-secondary',
     labels: ['Featured', 'Trending'],
     features: [
       'Generous 25L capacity',
@@ -1300,8 +1238,6 @@ export const products = [
       img('/images/products/Tote-bags/Lite-Cooler-Tote/tote-bags-carousel/13.avif'),
       img('/images/products/Tote-bags/Lite-Cooler-Tote/tote-bags-carousel/14.avif'),
     ],
-    badge: 'Bestseller',
-    badgeClass: 'bg-danger',
     labels: ['Best Seller', 'Sale'],
     features: [
       '16L size fits upright wine bottles',
@@ -1340,8 +1276,6 @@ export const products = [
       img('/images/products/Tote-bags/Cinch-Tote/tote-bags-carousel/11.avif'),
       img('/images/products/Tote-bags/Cinch-Tote/tote-bags-carousel/12.avif'),
     ],
-    badge: 'New',
-    badgeClass: 'bg-warning',
     labels: ['New Arrival', 'Limited Edition'],
     features: [
       'Large external front pocket that goes snap',

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * Reusable product color / variant selector.
@@ -25,10 +25,13 @@ export default function ColorSelector({
 }) {
   const isControlled = value !== undefined;
 
-  const findIndex = (name) => {
-    if (name === undefined || name === null) return -1;
-    return colors.findIndex((c) => (typeof c === 'string' ? c : c?.name) === name);
-  };
+  const findIndex = useCallback(
+    (name) => {
+      if (name === undefined || name === null) return -1;
+      return colors.findIndex((c) => (typeof c === 'string' ? c : c?.name) === name);
+    },
+    [colors]
+  );
 
   const [selectedIndex, setSelectedIndex] = useState(() => {
     const i = findIndex(defaultValue ?? value);
@@ -40,7 +43,7 @@ export default function ColorSelector({
       const i = findIndex(value);
       setSelectedIndex(i === -1 ? 0 : i);
     }
-  }, [value, isControlled, colors]);
+  }, [value, isControlled, findIndex]);
 
   const activeIndex = isControlled
     ? (() => {

@@ -72,24 +72,25 @@ export default function Navbar({ onOpenLogin, onOpenRegister }) {
                   {currentUser.name}
                 </span>
                 <span className="nav-separator" aria-hidden="true"></span>
-                <label
+                <button
+                  type="button"
                   className="btn-open-login"
                   onClick={logout}
-                  style={{ cursor: 'pointer', background: '#6c757d' }}
+                  style={{ cursor: 'pointer', background: '#6c757d', border: 'none', fontFamily: 'inherit' }}
                 >
                   Logout
-                </label>
+                </button>
               </>
             ) : (
               <>
                 {/* Login button */}
-                <label className="btn-open-login" onClick={onOpenLogin} style={{ cursor: 'pointer' }}>Login</label>
+                <button type="button" className="btn-open-login" onClick={onOpenLogin} style={{ cursor: 'pointer', border: 'none', fontFamily: 'inherit' }}>Login</button>
 
                 {/* Line separator */}
                 <span className="nav-separator" aria-hidden="true"></span>
 
                 {/* Register button */}
-                <label className="btn-open-register" onClick={onOpenRegister} style={{ cursor: 'pointer' }}>Register</label>
+                <button type="button" className="btn-open-register" onClick={onOpenRegister} style={{ cursor: 'pointer', border: 'none', fontFamily: 'inherit' }}>Register</button>
               </>
             )}
 

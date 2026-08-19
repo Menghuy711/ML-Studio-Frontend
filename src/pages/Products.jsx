@@ -2,6 +2,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { categories, products, PRODUCT_LABELS, getProductLabels } from '../data/products';
+import { img } from '../config';
 import ProductCard from '../components/ProductCard';
 import ProductSearch from '../components/ProductSearch';
 import PriceRangeSlider from '../components/PriceRangeSlider';
@@ -13,7 +14,7 @@ export default function Products() {
 
   // Price range boundaries for the slider
   const minPrice = 0;
-  const maxPrice = 200;
+  const maxPrice = Math.ceil(Math.max(...products.map((p) => p.price)));
 
   const [priceRange, setPriceRange] = useState({ min: minPrice, max: maxPrice });
   const [labelFilter, setLabelFilter] = useState('All');
@@ -57,28 +58,29 @@ export default function Products() {
   );
 
   // Arriving with a category hash (e.g. /products#tote from a product detail
-  // page): select that category filter and clear the hash from the URL.
+  // page): select that category filter, clear the hash from the URL, and
+  // scroll to the product grid.
   useEffect(() => {
     if (!location.hash) return;
     const id = location.hash.slice(1);
     const category = categories.find((c) => c.id === id);
     if (category) {
       setSelectedCategories([id]);
+      requestAnimationFrame(() => {
+        const el = document.getElementById('products-grid');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
       navigate(location.pathname, { replace: true });
     }
   }, [location, navigate]);
 
-  // Scroll to the product grid once the category filter has been applied.
-  useEffect(() => {
-    if (!location.hash) return;
-    const el = document.getElementById('products-grid');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [location.hash, selectedCategories]);
-
   return (
     <>
       {/* banner product */}
-      <section className="product-hero">
+      <section
+        className="product-hero"
+        style={{ backgroundImage: `url(${img('/images/logo/Product-banner.avif')})` }}
+      >
         <div className="container text-center">
           <h1 className="display-3 fw-bold">Our Collection</h1>
           <p className="lead">10+ Premium Bags Available</p>

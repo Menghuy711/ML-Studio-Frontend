@@ -1,8 +1,28 @@
+import { useState } from 'react';
+import { img } from '../config';
+
 export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setSubmitted(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Demo store — no backend yet. Show confirmation instead of a silent no-op.
+    setSubmitted(true);
+  };
+
   return (
     <>
       {/* Contact hero */}
-      <section className="contact-hero">
+      <section
+        className="contact-hero"
+        style={{ backgroundImage: `url(${img('/images/logo/Contact-banner.avif')})` }}
+      >
         <div className="container text-center">
           <h1 className="display-3 fw-bold">Contact Us</h1>
           <p>We would love to hear from you.</p>
@@ -36,17 +56,53 @@ export default function Contact() {
 
             {/* Form */}
             <div className="col-md-7">
-              <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <input type="text" className="form-control" placeholder="Your Name" />
+                  <label htmlFor="contact-name" className="form-label">Your Name</label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    placeholder="Your Name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="mb-3">
-                  <input type="email" className="form-control" placeholder="Your Email" />
+                  <label htmlFor="contact-email" className="form-label">Your Email</label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="Your Email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="mb-3">
-                  <textarea className="form-control" rows="5" placeholder="Your Message"></textarea>
+                  <label htmlFor="contact-message" className="form-label">Your Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    className="form-control"
+                    rows="5"
+                    placeholder="Your Message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
                 </div>
                 <button className="btn green-btn" type="submit">Send Message</button>
+                {submitted && (
+                  <p className="alert alert-success mt-3 mb-0" role="status">
+                    Thank you, {form.name || 'friend'}! Your message has been received.
+                    This is a demo store, so no email was actually sent.
+                  </p>
+                )}
               </form>
             </div>
           </div>

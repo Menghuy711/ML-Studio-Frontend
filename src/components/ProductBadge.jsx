@@ -18,7 +18,6 @@ const LABEL_ORDER = PRODUCT_LABELS;
  *  - labels:   Array of label strings. Optional — if omitted, the component
  *              reads `product.labels`.
  *  - product:  Product object whose `labels` are shown (when `labels` is absent).
- *  - position: Optional placement class ('top-left', 'top-right').
  *  - className: Extra classes appended to the wrapper.
  *
  * Renders nothing when the product has no labels.
@@ -26,7 +25,6 @@ const LABEL_ORDER = PRODUCT_LABELS;
 export default function ProductBadge({
   labels,
   product,
-  position,
   className = '',
 }) {
   const items = labels || getProductLabels(product);
@@ -39,15 +37,7 @@ export default function ProductBadge({
   );
 
   return (
-    <div
-      className={[
-        'product-badges',
-        position ? `product-badges--${position}` : '',
-        className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <div className={['product-badges', className].filter(Boolean).join(' ')}>
       {ordered.map((label, idx) => (
         <span
           key={idx}

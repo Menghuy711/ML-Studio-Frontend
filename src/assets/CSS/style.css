@@ -68,31 +68,6 @@ body{
     transform: translateY(-8px);
 }
 
-/* Hero ===================  */
-.hero{
-    background-image: url(/ML-Studio-Frontend/images/logo/banner.avif);
-    background-size:cover;
-    background-position:center;
-    color:white;
-}
-
-.hero h1{
-    font-size:4rem;
-    font-weight:800;
-    line-height:1.2;
-}
-
-.hero p{
-    font-size:1.2rem;
-    color:var(--light-bg);
-}
-
-.hero img{
-    max-height:600px;
-    filter:drop-shadow(0 20px 30px rgba(0,0,0,.15));
-}
-
-
 /* Hero Slideshow =================== */
 .hero-slider{
     position:relative;
@@ -409,14 +384,16 @@ footer p{
             padding: 1rem;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease;
-            z-index: 1050;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            z-index: 1060;
         }
 
         #login-toggle:checked~.login-overlay,
         #register-toggle:checked~.register-overlay {
             opacity: 1;
             pointer-events: all;
+            visibility: visible;
         }
 
         /* ── Modal card ── */
@@ -745,9 +722,13 @@ footer p{
 
         /* ── Small mobile: modal card stacks vertically ── */
         @media (max-width: 580px) {
+            .modal-overlay {
+                overflow-y: auto;
+            }
             .modal-card {
                 flex-direction: column;
                 border-radius: 16px;
+                max-height: none;
             }
 
             .modal-left {

@@ -2,12 +2,10 @@
 .contact-hero {
     color: white;
     padding: 100px 0;
-    background-image: url(/ML-Studio-Frontend/images/logo/Contact-banner.avif);
     background-size:cover;
     background-position: center;
     background-position-y: -5px;
     background-repeat: no-repeat;
-    
 }
 
 .info-card {

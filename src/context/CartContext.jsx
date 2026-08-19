@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { products } from '../data/products';
 
+// oxlint-disable-next-line react/only-export-components
 export const CartContext = createContext();
 
 const getVariantKey = (id, color) => `${id}::${color || ''}`;
@@ -30,27 +31,38 @@ export function CartProvider({ children }) {
   // Load from local storage on initial render
   useEffect(() => {
     const savedCart = localStorage.getItem('cartItems');
-    if (savedCart) {
-      const productImages = Object.fromEntries(
-        products.map((p) => [p.id, p.image])
-      );
-      const migrated = JSON.parse(savedCart).map((item) => ({
-        ...item,
-        variantKey: item.variantKey || getVariantKey(item.id, item.color),
-        image: item.color
-          ? item.image || productImages[item.id]
-          : productImages[item.id] || item.image,
-      }));
-      setCartItems(migrated);
+    if (!savedCart) return;
+    let parsed;
+    try {
+      parsed = JSON.parse(savedCart);
+    } catch {
+      localStorage.removeItem('cartItems');
+      return;
     }
+    if (!Array.isArray(parsed)) return;
+    const productImages = Object.fromEntries(
+      products.map((p) => [p.id, p.image])
+    );
+    const migrated = parsed.map((item) => ({
+      ...item,
+      variantKey: item.variantKey || getVariantKey(item.id, item.color),
+      image: item.color
+        ? item.image || productImages[item.id]
+        : productImages[item.id] || item.image,
+    }));
+    setCartItems(migrated);
   }, []);
 
   // Save to local storage whenever cartItems change
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    try {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    } catch {
+      // Storage full / unavailable — ignore, cart still works in-memory.
+    }
   }, [cartItems]);
 
-  const addToCart = (product) => {
+  const addToCart = useCallback((product) => {
     const variant = resolveDefaultVariant(product);
     setCartItems((prevItems) => {
       const key = getVariantKey(variant.id, variant.color);
@@ -64,17 +76,17 @@ export function CartProvider({ children }) {
       }
       return [...prevItems, { ...variant, variantKey: key, quantity: 1 }];
     });
-  };
+  }, []);
 
-  const removeFromCart = (variantKey) => {
+  const removeFromCart = useCallback((variantKey) => {
     setCartItems((prevItems) =>
       prevItems.filter((item) => item.variantKey !== variantKey)
     );
-  };
+  }, []);
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = useCallback(() => setCartItems([]), []);
 
-  const updateQuantity = (variantKey, amount) => {
+  const updateQuantity = useCallback((variantKey, amount) => {
     setCartItems((prevItems) =>
       prevItems.map((item) => {
         if (item.variantKey === variantKey) {
@@ -84,28 +96,44 @@ export function CartProvider({ children }) {
         return item;
       })
     );
-  };
+  }, []);
 
-  const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
+  const cartTotal = useMemo(
+    () =>
+      cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      ),
+    [cartItems]
   );
 
-  const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+  const cartCount = useMemo(
+    () => cartItems.reduce((count, item) => count + item.quantity, 0),
+    [cartItems]
+  );
+
+  const value = useMemo(
+    () => ({
+      cartItems,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      clearCart,
+      cartTotal,
+      cartCount,
+    }),
+    [
+      cartItems,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      clearCart,
+      cartTotal,
+      cartCount,
+    ]
+  );
 
   return (
-    <CartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-        cartTotal,
-        cartCount,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={value}>{children}</CartContext.Provider>
   );
 }

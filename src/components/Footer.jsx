@@ -38,15 +38,15 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="col-lg-4">
             <h5 className="footer-title">Contact Info</h5>
-            <Link to="https://maps.app.goo.gl/kXmbGDPmxCWMMijj9" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-white">
+            <a href="https://maps.app.goo.gl/kXmbGDPmxCWMMijj9" target="_blank" rel="noopener noreferrer" className="text-decoration-none text-white">
               <p><i className="fa-solid fa-location-dot fa-lg"></i> Etec Center</p>
-            </Link>
-            <Link to="tel:+855964663885" className="text-decoration-none text-white">
+            </a>
+            <a href="tel:+855964663885" className="text-decoration-none text-white">
               <p><i className="fa-solid fa-phone fa-lg"></i> +855 96 466 3885</p>
-            </Link>
-            <Link to="mailto:MLStudio@gmail.com" className="text-decoration-none text-white">
+            </a>
+            <a href="mailto:MLStudio@gmail.com" className="text-decoration-none text-white">
               <p><i className="fa-solid fa-envelope fa-lg"></i> MLStudio@gmail.com</p>
-            </Link>
+            </a>
           </div>
         </div>
         <hr />
