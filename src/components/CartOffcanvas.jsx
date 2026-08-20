@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 
-export default function CartOffcanvas({ onOpenLogin }) {
+export default function CartOffcanvas() {
   const { cartItems, removeFromCart, updateQuantity, cartTotal, clearCart } =
     useContext(CartContext);
   const { isLoggedIn, currentUser } = useContext(AuthContext);
@@ -21,13 +21,6 @@ export default function CartOffcanvas({ onOpenLogin }) {
     el?.addEventListener('hidden.bs.offcanvas', handler);
     return () => el?.removeEventListener('hidden.bs.offcanvas', handler);
   }, []);
-
-  // Advance to checkout automatically once the user logs in.
-  useEffect(() => {
-    if (isLoggedIn && step === 'loginRequired') {
-      setStep('checkout');
-    }
-  }, [isLoggedIn, step]);
 
   const handleProceed = () => {
     setStep(isLoggedIn ? 'checkout' : 'loginRequired');
@@ -83,12 +76,6 @@ export default function CartOffcanvas({ onOpenLogin }) {
             <p className="text-muted mb-4">
               Log in and we will keep your order safe.
             </p>
-            <button
-              className="btn gold-btn w-100 py-2 fw-bold mt-2"
-              onClick={() => onOpenLogin()}
-            >
-              Log In
-            </button>
             <button
               className="btn btn-outline-secondary w-100 py-2 fw-bold mt-2"
               onClick={() => setStep('cart')}
