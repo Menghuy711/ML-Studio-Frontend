@@ -1,16 +1,53 @@
-# React + Vite
+# ML Studio Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+![GitHub stars](https://img.shields.io/github/stars/Menghuy711/ML-Studio-Frontend?style=social)
+![License](https://img.shields.io/github/license/Menghuy711/ML-Studio-Frontend)
 
-Currently, two official plugins are available:
+A **modern, responsive web interface** built with **React** and **Vite** that showcases a machine‑learning studio dashboard. The app demonstrates clean component architecture, state‑of‑the‑art UI patterns, and a fast development workflow.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Dynamic data visualisation** with charts and tables.
+- **Responsive layout** using CSS Grid and Flexbox, works on desktop and mobile.
+- **Hot Module Replacement** for instant feedback while developing.
+- **Linting & formatting** powered by Oxlint for high code quality.
+- **Ready for TypeScript** – easy migration to a typed codebase.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Tech Stack
+
+- **React 18** – component‑based UI.
+- **Vite 4** – ultra‑fast dev server and bundler.
+- **Vite Plugin React** – JSX/TSX support.
+- **Oxlint** – modern linting.
+- **CSS Modules** – scoped styling.
+- **GitHub Pages** (optional) – for hosting the static build.
+
+---
+
+## Live Demo
+
+Explore the running application: [https://menghuy711.github.io/ML-Studio-Frontend/](https://menghuy711.github.io/ML-Studio-Frontend/)
+
+---
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Menghuy711/ML-Studio-Frontend.git
+cd ML-Studio-Frontend
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+The app will be available at `http://localhost:5173/`.
+
+---
