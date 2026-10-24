@@ -44,9 +44,34 @@ export function AuthProvider({ children }) {
     setCurrentUser(null);
   }, []);
 
+  const updateProfile = useCallback((updatedFields) => {
+    setCurrentUser((prev) => {
+      if (!prev) return null;
+      const updated = { ...prev, ...updatedFields };
+      localStorage.setItem('currentUser', JSON.stringify(updated));
+      return updated;
+    });
+    return { success: true };
+  }, []);
+
+  const changePassword = useCallback((currentPassword, newPassword) => {
+    if (currentPassword !== account.password) {
+      return { success: false, error: 'Current password is incorrect.' };
+    }
+    account.password = newPassword;
+    return { success: true };
+  }, []);
+
   const value = useMemo(
-    () => ({ currentUser, isLoggedIn: !!currentUser, login, logout }),
-    [currentUser, login, logout]
+    () => ({
+      currentUser,
+      isLoggedIn: !!currentUser,
+      login,
+      logout,
+      updateProfile,
+      changePassword,
+    }),
+    [currentUser, login, logout, updateProfile, changePassword]
   );
 
   return (

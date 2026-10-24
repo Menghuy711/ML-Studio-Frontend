@@ -66,21 +66,32 @@ export default function Navbar({ onOpenLogin, onOpenRegister }) {
           {/* Login, Register, and Cart */}
           <div className="nav-actions">
             {isLoggedIn ? (
-              <>
-                <span className="fw-bold me-2 text-white" style={{ fontSize: '0.95rem' }}>
-                  <i className="fa-solid fa-user me-1 text-warning"></i>
-                  {currentUser.name}
-                </span>
-                <span className="nav-separator" aria-hidden="true"></span>
+              <div className="dropdown d-inline-block me-2">
                 <button
+                  className="btn btn-outline-light dropdown-toggle d-flex align-items-center gap-2"
                   type="button"
-                  className="btn-open-login"
-                  onClick={logout}
-                  style={{ cursor: 'pointer', background: '#6c757d', border: 'none', fontFamily: 'inherit' }}
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ fontSize: '0.9rem' }}
                 >
-                  Logout
+                  <i className="fa-solid fa-circle-user fa-lg text-warning"></i>
+                  <span>{currentUser.name}</span>
                 </button>
-              </>
+                <ul className="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                  <li>
+                    <Link className="dropdown-item py-2" to="/profile">
+                      <i className="bi bi-person me-2"></i> My Profile
+                    </Link>
+                  </li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li>
+                    <button className="dropdown-item text-danger py-2" onClick={logout}>
+                      <i className="bi bi-box-arrow-right me-2"></i> Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
             ) : (
               <>
                 {/* Login button */}

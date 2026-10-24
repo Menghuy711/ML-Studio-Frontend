@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
 
 import { CartProvider } from './context/CartContext';
@@ -11,6 +12,7 @@ const Products = lazy(() => import('./pages/Products'));
 const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Profile = lazy(() => import('./pages/Profile'));
 
 function PageLoader() {
   return (
@@ -35,6 +37,7 @@ function App() {
                 <Route path="products/:id" element={<ProductDetails />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />
+                <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               </Route>
             </Routes>
           </Suspense>

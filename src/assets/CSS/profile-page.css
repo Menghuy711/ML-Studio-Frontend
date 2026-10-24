@@ -1,0 +1,74 @@
+/* ─────────────────────────────────────────────
+   Profile Page
+   ───────────────────────────────────────────── */
+
+.profile-container {
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 180px);
+}
+
+/* ── Sidebar card ── */
+.profile-sidebar {
+  background: #ffffff;
+}
+
+.profile-sidebar .list-group-item {
+  font-size: 0.93rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-sidebar .list-group-item.active {
+  background-color: #212529;
+  border-color: #212529;
+  color: #fff;
+}
+
+.profile-sidebar .list-group-item:not(.active):hover {
+  background-color: #f0f0f0;
+}
+
+/* ── Avatar ── */
+.avatar-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.35);
+  transition: transform 0.3s;
+}
+
+.avatar-circle:hover {
+  transform: scale(1.06);
+}
+
+/* ── Content card ── */
+.profile-content {
+  background: #ffffff;
+}
+
+.profile-content h4 {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.75rem;
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 991.98px) {
+  .profile-sidebar {
+    margin-bottom: 1rem;
+  }
+
+  .profile-sidebar .list-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .profile-sidebar .list-group .list-group-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
